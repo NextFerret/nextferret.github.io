@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextFerret </title>
+    <meta name="description" content="NextFerret - A community-driven organization building open source tools like Yanix Launcher.">
+    
+   
+    <link rel="icon" type="image/png" href="./favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        ferretPurple: '#AFA2D6',
+                        ferretPeach: '#FDE4C3',
+                        ferretDark: '#2D2D2D',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        .fade-in { animation: fadeIn 1.2s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <nav class="w-full py-6 px-8 flex justify-between items-center max-w-6xl mx-auto">
+        <a href="#" class="text-xl font-bold tracking-tight text-ferretDark hover:opacity-70 transition">
+            NextFerret
+        </a>
+        <a href="https://github.com/NextFerret" target="_blank" class="flex items-center gap-2 bg-gray-900 text-white px-5 py-2 rounded-full font-medium hover:bg-gray-700 transition shadow-lg text-sm md:text-base">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+            GitHub
+        </a>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center justify-center text-center px-4 py-16 lg:py-24">
+        
+        <div class="mb-8 fade-in">
+            <img src="./nextferret.png" alt="NextFerret Logo" class="h-32 md:h-48 lg:h-56 w-auto mx-auto drop-shadow-md hover:scale-105 transition duration-500">
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 fade-in" style="animation-delay: 0.2s;">
+            Community Driven.<br>Future Focused.
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mb-12 fade-in" style="animation-delay: 0.4s;">
+            We are <strong>NextFerret</strong>. An open organization dedicated to building accessible tools for everyone. Join us in shaping the next generation of software.
+        </p>
+
+        <div class="w-full max-w-4xl mx-auto fade-in" style="animation-delay: 0.6s;">
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-ferretPurple to-ferretPeach rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-1000 group-hover:duration-200"></div>
+                
+                <div class="relative bg-white ring-1 ring-gray-900/5 rounded-xl p-8 md:p-12 shadow-xl flex flex-col-reverse md:flex-row items-center md:items-start text-left">
+                    
+                    <div class="flex-1 mt-6 md:mt-0">
+                        <div class="inline-block bg-ferretPurple/20 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+                            Featured Project
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Yanix Launcher</h2>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Yandere Simulator In Linux. Simply. Seamless.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://github.com/NextFerret/yanixlauncher" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 md:py-3 md:text-lg transition shadow-md">
+                                View on GitHub
+                            </a>
+                            <a href="https://github.com/NextFerret/yanixlauncher/issues" class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-base font-medium rounded-md text-gray-700 bg-gray-50 hover:bg-gray-100 md:py-3 md:text-lg transition">
+                                Report Bug
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mb-6 md:mb-0 md:ml-10 flex-shrink-0">
+                        <div class="h-32 w-32 bg-gray-50 rounded-2xl flex items-center justify-center border border-gray-100 shadow-inner p-4">
+                            <img src="./yanix.png" alt="Yanix Launcher" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-8 mt-10">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            <div class="mb-4 md:mb-0">
+                &copy; <script>document.write(new Date().getFullYear())</script> NextFerret Organization.
+            </div>
+            <div class="flex gap-6">
+                <a href="https://github.com/NextFerret" class="hover:text-gray-900 transition">GitHub Profile</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
