@@ -4,23 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NextFerretOS — A Mutable Debian-Based Linux Distribution</title>
+<title>NextFerretOS — Atomic and Mutable Linux</title>
 
-<meta name="description" content="NextFerretOS is a Debian-based Linux distribution focused on stability, mutability, and user control. Writable root filesystem, Btrfs snapshots, no immutable nonsense.">
-<meta name="keywords" content="NextFerretOS, Linux distribution, Debian based, mutable Linux, Btrfs Linux, Linux gaming, Wine, Proton, Debian 13">
+<meta name="description" content="NextFerretOS: The Future is Not Immutable, It is Atomic and Mutable. A Debian Stable based Linux distribution rejecting forced immutability with NF-Tree technology.">
+<meta name="keywords" content="NextFerretOS, Linux distribution, Debian Stable, mutable Linux, Btrfs Linux, NF-Tree, Grub-Btrfs">
 <meta name="author" content="NextFerretOS Project">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nextferret.github.io/">
 
+<link rel="icon" type="image/png" href="https://nextferret.github.io/nextferretos/nos.png">
+
 <meta property="og:type" content="website">
-<meta property="og:title" content="NextFerretOS — The Future is not immutable">
-<meta property="og:description" content="A Debian-based Linux distribution that rejects immutable systems. Full user control, writable root, Btrfs snapshots.">
+<meta property="og:title" content="NextFerretOS — Atomic and Mutable">
+<meta property="og:description" content="A Debian Stable based Linux distribution that gives you full ownership. Atomic updates, fully mutable root, and zero forced sandboxing.">
 <meta property="og:url" content="https://nextferret.github.io/">
 <meta property="og:image" content="https://nextferret.github.io/nextferretos/nfos.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NextFerretOS — The Future is not immutable">
-<meta name="twitter:description" content="Debian-based Linux with full mutability, writable root filesystem and snapshot rollback.">
+<meta name="twitter:title" content="NextFerretOS — Atomic and Mutable">
+<meta name="twitter:description" content="Debian-based Linux with NF-Tree technology, giving you atomic safety and a fully mutable OS.">
 <meta name="twitter:image" content="https://nextferret.github.io/nextferretos/nfos.png">
 
 <meta name="theme-color" content="#EC4899">
@@ -59,11 +61,18 @@ tailwind.config = {
 </style>
 </head>
 
-<body class="bg-black text-zinc-100 font-sans antialiased">
+<body class="bg-black text-zinc-100 font-sans antialiased relative">
+
+<a href="https://nextferret.github.io/" class="absolute top-6 left-6 md:top-8 md:left-8 flex items-center gap-2 text-zinc-400 hover:text-ferretPink transition-colors duration-300 z-50 group font-medium text-sm md:text-base fade-in">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+  </svg>
+  Return
+</a>
 
 <main>
 
-<header class="py-24 px-6 max-w-6xl mx-auto text-center fade-in">
+<header class="pt-32 pb-24 px-6 max-w-6xl mx-auto text-center fade-in">
   <img
     src="https://nextferret.github.io/nextferretos/nos.png"
     alt="NextFerretOS Logo"
@@ -74,20 +83,17 @@ tailwind.config = {
     NextFerretOS
   </h1>
 
-  <p class="text-2xl md:text-3xl font-light text-zinc-400 italic mb-14">
-    The Future is not immutable
+  <p class="text-2xl md:text-3xl font-light text-zinc-400 mb-14 leading-snug">
+    The Future is Not Immutable.<br>
+    <span class="text-white font-medium italic">It is Atomic and Mutable.</span>
   </p>
 
   <div class="max-w-3xl mx-auto border-l-4 logo-gradient-border pl-6 text-left">
     <p class="text-lg md:text-xl leading-relaxed text-zinc-300">
-      <strong>NextFerretOS</strong> is a Linux distribution based on
-      <span class="font-semibold text-white">Debian</span>, designed to reject
-      immutable operating systems. Built with
-      <span class="font-medium text-white">Btrfs</span>, it offers a writable root
-      filesystem and snapshot rollback.
+      Based on <span class="font-semibold text-white">Debian Stable</span>, NextFerretOS offers a rock-solid base for everyday users, developers, and power users. We reject the idea that stability must come at the cost of flexibility.
       <br><br>
       <span class="italic font-bold uppercase tracking-wide text-ferretPink">
-        “If I can't insert a file in /usr, the operating system is not mine.”
+        “If you can't modify a file in /usr, the operating system is not truly yours.”
       </span>
     </p>
   </div>
@@ -97,57 +103,82 @@ tailwind.config = {
   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-ferretPurple via-ferretPink to-ferretBlue"></div>
 
   <div class="max-w-4xl mx-auto fade-in">
-    <h2 class="text-5xl md:text-7xl font-black mb-12 tracking-tighter">
-      Stability. <span class="logo-gradient-text">Mutability.</span>
+    <h2 class="text-5xl md:text-6xl font-black mb-10 tracking-tighter">
+      The Philosophy of <span class="logo-gradient-text">Ownership.</span>
     </h2>
 
     <p class="text-xl md:text-2xl text-zinc-400 leading-relaxed font-light">
-      NextFerretOS 1.2 <span class="text-white font-medium">(Savage Ferret)</span>
-      is built on <span class="text-white font-medium">Debian 13</span>.
-      Stable base, full control, no vendor lock-in.
+      NextFerretOS refuses the overhead of Flatpaks, Snaps, and traditional heavy containers. By keeping the OS clean and predictable, we leverage 
+      <span class="text-white font-bold">NF-Tree</span>: a custom-built atomic system that provides the safety of snapshot-based deployments while remaining <span class="text-ferretPink font-medium">fully mutable</span>.
     </p>
   </div>
 </section>
 
 <section class="py-28 px-6 bg-black">
-  <div class="max-w-4xl mx-auto text-center fade-in">
-    <h2 class="text-4xl md:text-6xl font-black text-zinc-200 mb-14 uppercase tracking-widest">
-      Linux Gaming Ready
+  <div class="max-w-6xl mx-auto fade-in">
+    <h2 class="text-4xl md:text-5xl font-black text-center text-zinc-200 mb-16 uppercase tracking-widest">
+      Key Features
     </h2>
 
-    <div class="bg-zinc-900 p-10 md:p-14 rounded-3xl shadow-2xl hover:shadow-[0_20px_80px_rgba(236,72,153,0.25)] transition-all duration-500">
-      <p class="text-2xl md:text-3xl font-light text-zinc-300 leading-snug">
-        Powered by <span class="font-bold text-ferretPink">Wine</span> and
-        <span class="font-bold text-ferretBlue">Steam Proton</span>,
-        Windows gaming on Linux is no longer experimental —
-        <span class="italic underline decoration-ferretPurple decoration-4 underline-offset-8">
-          it just works.
-        </span>
-      </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <div class="bg-zinc-900 border border-zinc-800 p-10 rounded-3xl hover:border-ferretPurple/50 hover:shadow-[0_10px_40px_rgba(168,85,247,0.15)] transition-all duration-500">
+        <h3 class="text-2xl font-bold text-white mb-4">NF-Tree Technology</h3>
+        <p class="text-zinc-400 leading-relaxed text-lg font-light">
+          Experience the best of both worlds. NF-Tree handles system updates atomically to ensure boot integrity, yet keeps the filesystem open and modifiable for deep customization.
+        </p>
+      </div>
+
+      <div class="bg-zinc-900 border border-zinc-800 p-10 rounded-3xl hover:border-ferretPink/50 hover:shadow-[0_10px_40px_rgba(236,72,153,0.15)] transition-all duration-500">
+        <h3 class="text-2xl font-bold text-white mb-4">Integrated Snapshots</h3>
+        <p class="text-zinc-400 leading-relaxed text-lg font-light">
+          Never fear a configuration error again. With built-in snapshot tools, you can seamlessly capture the exact state of your system at any given moment.
+        </p>
+      </div>
+
+      <div class="bg-zinc-900 border border-zinc-800 p-10 rounded-3xl hover:border-ferretBlue/50 hover:shadow-[0_10px_40px_rgba(59,130,246,0.15)] transition-all duration-500">
+        <h3 class="text-2xl font-bold text-white mb-4">Grub-Btrfs Integration</h3>
+        <p class="text-zinc-400 leading-relaxed text-lg font-light">
+          Roll back directly from the boot menu. If an update or manual tweak goes wrong, simply select a previous snapshot from the GRUB interface and return to a working state in seconds.
+        </p>
+      </div>
+
+      <div class="bg-zinc-900 border border-zinc-800 p-10 rounded-3xl hover:shadow-[0_10px_40px_rgba(255,255,255,0.1)] transition-all duration-500">
+        <h3 class="text-2xl font-bold text-white mb-4">Built for Performance</h3>
+        <p class="text-zinc-400 leading-relaxed text-lg font-light">
+          Without the bloat of sandboxed abstractions, your hardware's full power is dedicated to your tasks—whether you are building a minimal workstation, a <span class="text-white font-medium">gaming-ready desktop</span>, or a specialized dev environment.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<footer class="bg-zinc-950 py-28 px-6">
-  <div class="max-w-4xl mx-auto flex flex-col items-center gap-14 text-center fade-in">
+<footer class="bg-zinc-950 py-28 px-6 border-t border-zinc-900">
+  <div class="max-w-4xl mx-auto flex flex-col items-center gap-10 text-center fade-in">
+
+    <p class="text-2xl md:text-3xl font-light text-zinc-300 leading-snug mb-8">
+      NextFerretOS adapts to <span class="text-ferretPink font-medium italic">you</span> — not the other way around.<br>
+      A system that respects your expertise and protects your uptime.
+    </p>
 
     <a
       href="https://github.com/NextFerret/nextferretOS/tree/main"
-      class="text-4xl md:text-6xl font-extralight tracking-tight hover:text-ferretPink transition-colors"
+      class="text-4xl md:text-5xl font-extralight tracking-tight hover:text-ferretPink transition-colors"
     >
       View on GitHub
     </a>
 
     <a
       href="https://github.com/NextFerret/nextferretOS/releases"
-      class="px-14 py-5 rounded-full border border-white/30 hover:border-white hover:bg-white hover:text-black transition-all text-3xl md:text-4xl font-light"
+      class="mt-6 px-14 py-5 rounded-full border border-white/30 hover:border-white hover:bg-white hover:text-black transition-all text-2xl md:text-3xl font-medium"
     >
       Download
     </a>
 
-    <p class="text-xl md:text-2xl font-medium tracking-wide text-zinc-500">
+    <p class="text-lg md:text-xl font-medium tracking-wide text-zinc-600 mt-6">
       Current Release:
-      <span class="text-white">1.2 Savage Ferret BETA </span>
+      <span class="text-zinc-300">1.3 Quantum ferret</span>
     </p>
 
   </div>
@@ -157,4 +188,3 @@ tailwind.config = {
 
 </body>
 </html>
-
