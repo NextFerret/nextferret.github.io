@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth bg-black text-white">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,6 @@
 <meta name="description" content="NextFerretOS: The Future is Not Immutable, It is Atomic and Mutable. A Debian Stable based Linux distribution rejecting forced immutability with NF-Tree technology.">
 <meta name="keywords" content="NextFerretOS, Linux distribution, Debian Stable, mutable Linux, Btrfs Linux, NF-Tree, Grub-Btrfs">
 <meta name="author" content="NextFerretOS Project">
-<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nextferret.github.io/">
 
 <link rel="icon" type="image/png" href="https://nextferret.github.io/nextferretos/nfos.png">
@@ -20,15 +19,12 @@
 <meta property="og:url" content="https://nextferret.github.io/">
 <meta property="og:image" content="https://nextferret.github.io/nextferretos/nfos.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NextFerretOS — Atomic and Mutable">
-<meta name="twitter:description" content="Debian-based Linux with NF-Tree technology, giving you atomic safety and a fully mutable OS.">
-<meta name="twitter:image" content="https://nextferret.github.io/nextferretos/nfos.png">
 
-<meta name="theme-color" content="#EC4899">
+<meta name="theme-color" content="#000000">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -36,15 +32,22 @@ tailwind.config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
-        ferretPurple: '#A855F7',
-        ferretPink: '#EC4899',
-        ferretBlue: '#3B82F6',
-        dark: '#09090b',
-        darker: '#000000',
+        nf: {
+          purple: '#A855F7',
+          pink: '#EC4899',
+          blue: '#3B82F6',
+          dark: '#09090B',
+          border: '#27272A',
+          card: '#121214'
+        }
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'text-gradient': 'linear-gradient(to right, #A855F7, #EC4899, #3B82F6)',
       }
     }
   }
@@ -52,191 +55,231 @@ tailwind.config = {
 </script>
 
 <style>
-  .logo-gradient-text {
-    background: linear-gradient(90deg, #A855F7, #EC4899, #3B82F6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .glass-card {
-    background: rgba(24, 24, 27, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-  .glow-bg {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(236,72,153,0.15) 0%, rgba(0,0,0,0) 70%);
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: -1;
-    pointer-events: none;
+  body {
+    background-color: #000000;
   }
   
-  .fade-in-up {
+  .text-gradient {
+    background-image: linear-gradient(to right, #A855F7, #EC4899, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  }
+
+  .glow-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.15), transparent 60%);
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 0 10px 40px -10px rgba(236, 72, 153, 0.15);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
 
-  @keyframes fadeInUp {
+  @keyframes fadeIn {
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  .blur-nav {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 </style>
 </head>
 
-<body class="bg-darker text-zinc-300 font-sans antialiased relative overflow-x-hidden selection:bg-ferretPink selection:text-white">
+<body class="antialiased selection:bg-nf-pink selection:text-white overflow-x-hidden">
 
-<div class="glow-bg"></div>
+<nav class="fixed w-full z-50 top-0 border-b border-white/5 blur-nav bg-black/50">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 group">
+      <img src="https://nextferret.github.io/nextferretos/nfos.png" alt="Logo" class="w-8 h-8 group-hover:scale-110 transition-transform">
+      <span class="font-bold tracking-wide text-lg">NextFerret<span class="text-nf-pink">OS</span></span>
+    </a>
+    
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+      <a href="#features" class="hover:text-white transition-colors">Features</a>
+      <a href="https://github.com/NextFerret/nextferretOS/tree/main" class="hover:text-white transition-colors">Source</a>
+      <a href="https://github.com/NextFerret/nextferretOS/releases" class="hover:text-white transition-colors">Releases</a>
+    </div>
 
-<nav class="absolute top-0 w-full p-6 md:p-8 z-50 flex justify-between items-center fade-in-up">
-  <a href="https://nextferret.github.io/" class="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-300 group font-medium text-sm md:text-base">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-    </svg>
-    Return
-  </a>
-  <div class="hidden md:flex gap-4">
-    <a href="https://github.com/NextFerret/nextferretOS/releases" class="text-sm font-semibold text-zinc-400 hover:text-white transition">Releases</a>
-    <a href="https://github.com/NextFerret/nextferretOS/tree/main" class="text-sm font-semibold text-zinc-400 hover:text-white transition">Source Code</a>
+    <div class="flex items-center gap-4">
+      <a href="https://github.com/NextFerret/nextferretOS/releases" class="hidden sm:flex items-center gap-2 bg-white text-black px-5 py-2.5 rounded-full text-sm font-bold hover:bg-zinc-200 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download
+      </a>
+    </div>
   </div>
 </nav>
 
 <main>
+  <section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-grid z-0"></div>
+    <div class="glow-effect"></div>
 
-<header class="pt-32 pb-20 md:pt-40 md:pb-32 px-6 max-w-5xl mx-auto text-center relative z-10">
-  <img
-    src="https://nextferret.github.io/nextferretos/nfos.png"
-    alt="NextFerretOS Logo"
-    class="w-32 md:w-44 mb-10 mx-auto drop-shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:scale-105 transition-transform duration-500 fade-in-up"
-  />
-
-  <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 logo-gradient-text fade-in-up delay-100">
-    NextFerretOS
-  </h1>
-
-  <p class="text-xl md:text-3xl font-light text-zinc-400 mb-10 leading-tight fade-in-up delay-200">
-    The Future is Not Immutable.<br>
-    <span class="text-white font-medium italic">It is Atomic and Mutable.</span>
-  </p>
-
-  <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16 fade-in-up delay-300">
-    <a href="https://github.com/NextFerret/nextferretOS/releases" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-ferretPink to-ferretPurple text-white font-semibold text-lg shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:-translate-y-1 transition-all duration-300">
-      Download v1.3
-    </a>
-    <a href="https://github.com/NextFerret/nextferretOS/tree/main" class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-zinc-700 bg-zinc-900/50 text-white font-semibold text-lg hover:bg-zinc-800 hover:border-zinc-500 transition-all duration-300 flex items-center justify-center gap-2">
-      <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-      GitHub
-    </a>
-  </div>
-
-  <div class="max-w-3xl mx-auto fade-in-up delay-400">
-    <div class="p-[1px] rounded-2xl bg-gradient-to-b from-zinc-800 to-transparent">
-      <div class="glass-card rounded-2xl p-8 text-left">
-        <p class="text-lg leading-relaxed text-zinc-300 mb-6">
-          Based on <span class="font-semibold text-white">Debian Stable</span>, NextFerretOS offers a rock-solid base for everyday users, developers, and power users. We reject the idea that stability must come at the cost of flexibility.
-        </p>
-        <blockquote class="border-l-4 border-ferretPink pl-4 italic text-white font-medium text-lg">
-          “If you can't modify a file in <span class="font-mono text-ferretPink text-base">/usr</span>, the operating system is not truly yours.”
-        </blockquote>
-      </div>
-    </div>
-  </div>
-</header>
-
-<section class="relative py-24 px-6 bg-dark border-y border-zinc-900">
-  <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-ferretPink to-transparent opacity-50"></div>
-
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl md:text-5xl font-black mb-8 tracking-tighter text-white">
-      The Philosophy of <span class="logo-gradient-text">Ownership.</span>
-    </h2>
-
-    <p class="text-lg md:text-xl text-zinc-400 leading-relaxed font-light">
-      NextFerretOS refuses the overhead of Flatpaks, Snaps, and traditional heavy containers. By keeping the OS clean and predictable, we leverage 
-      <code class="text-white font-mono bg-zinc-800 px-2 py-1 rounded text-sm">NF-Tree</code> — a custom-built atomic system that provides the safety of snapshot-based deployments while remaining <span class="text-ferretPink font-medium">fully mutable</span>.
-    </p>
-  </div>
-</section>
-
-<section class="py-24 px-6 bg-darker">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-sm font-bold text-center text-zinc-500 mb-12 uppercase tracking-[0.2em]">
-      Core Technology
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-16 items-center">
       
-      <div class="glass-card border border-zinc-800/50 p-8 rounded-2xl hover:border-ferretPurple/50 hover:bg-zinc-900/80 transition-all duration-300 group">
-        <div class="w-12 h-12 rounded-lg bg-ferretPurple/10 flex items-center justify-center mb-6 text-ferretPurple group-hover:scale-110 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+      <div class="order-2 lg:order-1 flex flex-col items-start text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-nf-pink/30 bg-nf-pink/10 text-nf-pink text-xs font-bold uppercase tracking-wider mb-8 animate-fade-in">
+          <span class="w-2 h-2 rounded-full bg-nf-pink animate-pulse"></span>
+          Version 1.3 Available
         </div>
-        <h3 class="text-xl font-bold text-white mb-3">NF-Tree Technology</h3>
-        <p class="text-zinc-400 leading-relaxed text-sm md:text-base">
-          Experience the best of both worlds. NF-Tree handles system updates atomically to ensure boot integrity, yet keeps the filesystem open and modifiable for deep customization.
+
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 animate-fade-in delay-100">
+          The future is <br>
+          <span class="text-gradient">atomic & mutable.</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-zinc-400 font-medium leading-relaxed mb-10 max-w-xl animate-fade-in delay-200">
+          A <span class="text-white font-bold">Debian Stable</span> based Linux distribution that gives you full ownership. NF-Tree technology provides snapshot safety without forcing sandboxed immutability.
         </p>
+
+        <div class="flex flex-col sm:flex-row w-full sm:w-auto gap-4 animate-fade-in delay-300">
+          <a href="https://github.com/NextFerret/nextferretOS/releases" class="flex items-center justify-center gap-3 bg-gradient-to-r from-nf-purple via-nf-pink to-nf-blue p-[2px] rounded-full group">
+            <div class="bg-black text-white px-8 py-4 rounded-full font-bold text-lg w-full h-full flex items-center justify-center group-hover:bg-transparent transition-colors duration-300">
+              Get NextFerretOS
+            </div>
+          </a>
+          <a href="https://github.com/NextFerret/nextferretOS" class="flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800 text-white font-bold text-lg transition-colors">
+            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
       </div>
 
-      <div class="glass-card border border-zinc-800/50 p-8 rounded-2xl hover:border-ferretPink/50 hover:bg-zinc-900/80 transition-all duration-300 group">
-        <div class="w-12 h-12 rounded-lg bg-ferretPink/10 flex items-center justify-center mb-6 text-ferretPink group-hover:scale-110 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+      <div class="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-in delay-200">
+        <div class="relative w-64 h-64 md:w-96 md:h-96">
+          <div class="absolute inset-0 bg-nf-pink blur-[100px] opacity-30 rounded-full"></div>
+          <img src="https://nextferret.github.io/nextferretos/nfos.png" alt="OS Logo" class="relative z-10 w-full h-full object-contain drop-shadow-2xl">
         </div>
-        <h3 class="text-xl font-bold text-white mb-3">Integrated Snapshots</h3>
-        <p class="text-zinc-400 leading-relaxed text-sm md:text-base">
-          Never fear a configuration error again. With built-in snapshot tools, you can seamlessly capture the exact state of your system at any given moment.
-        </p>
-      </div>
-
-      <div class="glass-card border border-zinc-800/50 p-8 rounded-2xl hover:border-ferretBlue/50 hover:bg-zinc-900/80 transition-all duration-300 group">
-        <div class="w-12 h-12 rounded-lg bg-ferretBlue/10 flex items-center justify-center mb-6 text-ferretBlue group-hover:scale-110 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-        </div>
-        <h3 class="text-xl font-bold text-white mb-3">Grub-Btrfs Integration</h3>
-        <p class="text-zinc-400 leading-relaxed text-sm md:text-base">
-          Roll back directly from the boot menu. If an update or manual tweak goes wrong, simply select a previous snapshot from the GRUB interface and return to a working state in seconds.
-        </p>
-      </div>
-
-      <div class="glass-card border border-zinc-800/50 p-8 rounded-2xl hover:border-white/30 hover:bg-zinc-900/80 transition-all duration-300 group">
-        <div class="w-12 h-12 rounded-lg bg-zinc-700/30 flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-        </div>
-        <h3 class="text-xl font-bold text-white mb-3">Built for Performance</h3>
-        <p class="text-zinc-400 leading-relaxed text-sm md:text-base">
-          Without the bloat of sandboxed abstractions, your hardware's full power is dedicated to your tasks—whether building a minimal workstation, a gaming rig, or a dev environment.
-        </p>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
+  <section class="border-y border-white/5 bg-nf-dark py-12">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-10 md:gap-20 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+      <div class="flex items-center gap-3 font-bold text-xl tracking-tight"><span class="text-nf-pink">⚙️</span> Debian Stable</div>
+      <div class="flex items-center gap-3 font-bold text-xl tracking-tight"><span class="text-nf-purple">🌳</span> NF-Tree</div>
+      <div class="flex items-center gap-3 font-bold text-xl tracking-tight"><span class="text-nf-blue">💾</span> BTRFS</div>
+      <div class="flex items-center gap-3 font-bold text-xl tracking-tight"><span class="text-white">🚀</span> Grub Integration</div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-black relative" id="features">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.05),transparent_50%)]"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-20 max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-6">Built for absolute control.</h2>
+        <p class="text-xl text-zinc-400">We refuse the overhead of Flatpaks and Snaps. NextFerretOS keeps the system clean, predictable, and entirely yours.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <div class="bg-nf-card border border-nf-border rounded-3xl p-8 lg:p-10 card-hover">
+          <div class="w-14 h-14 bg-nf-purple/10 border border-nf-purple/20 rounded-2xl flex items-center justify-center text-nf-purple mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">NF-Tree Architecture</h3>
+          <p class="text-zinc-400 leading-relaxed text-lg">System updates are handled atomically ensuring boot integrity. Unlike strictly immutable distros, your filesystem remains open and natively modifiable.</p>
+        </div>
+
+        <div class="bg-nf-card border border-nf-border rounded-3xl p-8 lg:p-10 card-hover">
+          <div class="w-14 h-14 bg-nf-pink/10 border border-nf-pink/20 rounded-2xl flex items-center justify-center text-nf-pink mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Integrated Snapshots</h3>
+          <p class="text-zinc-400 leading-relaxed text-lg">Break things fearlessly. Built-in snapshot tools automatically capture system states before major changes, allowing instant recovery.</p>
+        </div>
+
+        <div class="bg-nf-card border border-nf-border rounded-3xl p-8 lg:p-10 card-hover">
+          <div class="w-14 h-14 bg-nf-blue/10 border border-nf-blue/20 rounded-2xl flex items-center justify-center text-nf-blue mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Grub-Btrfs Menu</h3>
+          <p class="text-zinc-400 leading-relaxed text-lg">Roll back directly from the bootloader. If an update fails, simply select yesterday's snapshot from GRUB and boot into a working system.</p>
+        </div>
+
+        <div class="bg-nf-card border border-nf-border rounded-3xl p-8 lg:p-10 card-hover">
+          <div class="w-14 h-14 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center text-white mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Bare-Metal Performance</h3>
+          <p class="text-zinc-400 leading-relaxed text-lg">Zero forced sandboxing means your hardware is fully dedicated to your tasks. Ideal for gaming rigs, developers, and power users.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-nf-dark border-y border-white/5">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto text-nf-pink mb-8 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.714-4.675-8.28-7.904-9.609l-1.113 2.016c2.816 1.139 7.017 3.633 7.017 7.593v7.391h2zm-12.017 0v-7.391c0-5.714-4.675-8.28-7.904-9.609l-1.113 2.016c2.816 1.139 7.017 3.633 7.017 7.593v7.391h2z"/></svg>
+      <h2 class="text-3xl md:text-5xl font-extrabold leading-tight mb-8">
+        "If you can't modify a file in <span class="font-mono text-nf-pink bg-nf-pink/10 px-2 py-1 rounded-md">/usr</span>, the operating system is not truly yours."
+      </h2>
+      <p class="text-zinc-500 font-bold uppercase tracking-widest">— The NextFerret Ethos</p>
+    </div>
+  </section>
+
+  <section class="py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-black to-nf-dark z-0"></div>
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+      <h2 class="text-4xl md:text-6xl font-black mb-8">Ready to take control?</h2>
+      <p class="text-xl text-zinc-400 mb-12 max-w-2xl">Join the NextFerretOS project today. Experience the stability of Debian mixed with the bleeding edge of atomic system management.</p>
+      <a href="https://github.com/NextFerret/nextferretOS/releases" class="bg-white text-black px-12 py-5 rounded-full font-extrabold text-xl hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
+        Download NextFerretOS
+      </a>
+    </div>
+  </section>
 </main>
 
-<footer class="bg-dark border-t border-zinc-900 py-12 px-6">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-    
-    <div class="text-center md:text-left">
-      <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
-        <img src="https://nextferret.github.io/nextferretos/nfos.png" alt="Logo" class="w-6 h-6 grayscale opacity-70">
-        <span class="font-bold text-white text-lg">NextFerretOS</span>
+<footer class="bg-black border-t border-white/10 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+      <div class="flex items-center gap-3">
+        <img src="https://nextferret.github.io/nextferretos/nfos.png" alt="Logo" class="w-8 h-8 grayscale opacity-50">
+        <span class="font-bold text-xl text-zinc-300 tracking-tight">NextFerretOS</span>
       </div>
-      <p class="text-sm text-zinc-500">Adapts to you, not the other way around.</p>
+      <div class="flex gap-8 font-medium text-zinc-500">
+        <a href="https://github.com/NextFerret/nextferretOS" class="hover:text-white transition-colors">GitHub</a>
+        <a href="https://github.com/NextFerret/nextferretOS/releases" class="hover:text-white transition-colors">Releases</a>
+        <a href="#" class="hover:text-white transition-colors">Documentation</a>
+      </div>
     </div>
-
-    <div class="flex items-center gap-6 text-sm font-medium text-zinc-400">
-      <span class="px-3 py-1 rounded-full bg-zinc-800/50 border border-zinc-700">
-        Version <span class="text-white">1.3 Quantum ferret</span>
-      </span>
-      <a href="https://github.com/NextFerret/nextferretOS" class="hover:text-white transition-colors">GitHub</a>
-      <a href="#" class="hover:text-white transition-colors">Documentation</a>
+    <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-zinc-600 text-sm">
+      <p>Based on Debian Stable. Built with NF-Tree.</p>
+      <p class="mt-2 md:mt-0">© NextFerretOS Project. Open Source.</p>
     </div>
-
   </div>
 </footer>
 
