@@ -1,413 +1,261 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth bg-slate-950 text-white">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NextFerret Linux</title>
-<meta name="description" content="NextFerret Linux: Reliability meets freedom. A safe, user-friendly Debian-based operating system.">
-<link rel="canonical" href="https://nextferret.github.io/">
-<link rel="icon" type="image/png" href="https://nextferret.github.io/linux/nflinux-white.png">
-<meta property="og:title" content="NextFerret Linux">
-<meta property="og:description" content="A reliable, user-friendly Linux distribution that puts you in control.">
-<meta property="og:image" content="https://nextferret.github.io/linux/nflinux-white.png">
-<meta name="theme-color" content="#020617">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-        body: ['"Inter"', 'sans-serif'],
-      },
-      colors: {
-        brand: {
-          blue: '#3B82F6',
-          lightblue: '#60A5FA',
-          dark: '#020617',
-          card: '#0F172A',
-          border: '#1E293B'
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextFerret Linux | Official Site</title>
+    <link rel="icon" type="image/png" href="https://nextferret.github.io/linux/nflinux-white.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], body: ['"Inter"', 'sans-serif'] },
+                    colors: { brand: { blue: '#3B82F6', lightblue: '#60A5FA', dark: '#020617', card: '#0F172A', border: '#1E293B' } }
+                }
+            }
         }
-      }
-    }
-  }
-}
-</script>
-<style>
-  body {
-    background-color: #020617;
-  }
-  .bg-grid {
-    background-size: 40px 40px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
-  }
-  .glow-effect {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.15), transparent 70%);
-    top: 0;
-    left: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .card-hover {
-    transition: all 0.3s ease;
-  }
-  .card-hover:hover {
-    transform: translateY(-4px);
-    border-color: rgba(96, 165, 250, 0.4);
-    box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.15);
-  }
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  @keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .blur-nav {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-</style>
+    </script>
+    <style>
+        .blur-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .bg-grid { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px); }
+        .legal-notice-box {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 500px;
+        }
+        .legal-text { font-size: 0.85rem; line-height: 1.5; color: #cbd5e1; }
+        .legal-text strong { color: #60A5FA; font-weight: 800; }
+        .feature-card { transition: all 0.3s ease; }
+        .feature-card:hover { transform: translateY(-5px); border-color: #3B82F6; background: #0f172a; }
+    </style>
 </head>
-<body class="antialiased selection:bg-brand-blue selection:text-white overflow-x-hidden font-body">
+<body class="font-body antialiased selection:bg-brand-blue selection:text-white">
 
-<nav class="fixed w-full z-50 top-0 border-b border-brand-border blur-nav bg-brand-dark/80">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-    
-    <div class="flex items-center gap-4">
-      <a href="/" class="flex items-center gap-3 group">
-        <img src="https://nextferret.github.io/linux/nflinux-white.png" alt="NextFerret Linux Logo" class="w-8 h-8 group-hover:scale-105 transition-transform">
-        <span class="font-bold tracking-wide text-lg hidden sm:block font-sans">NextFerret <span class="text-brand-lightblue">Linux</span></span>
-      </a>
-      <div class="h-6 w-px bg-brand-border hidden md:block"></div>
-      <a href="https://nextferret.github.io/" class="hidden md:flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors" data-i18n="navReturn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-        Return to Home
-      </a>
-    </div>
-    
-    <div class="flex items-center gap-3 sm:gap-6">
-      <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-400 mr-4">
-        <a href="#features" class="hover:text-white transition-colors" data-i18n="navFeatures">Features</a>
-        <a href="https://github.com/NextFerret/nextferret-linux/releases" class="hover:text-white transition-colors" data-i18n="navDownload">Download</a>
-      </div>
-
-      <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-brand-card border border-brand-border text-slate-300 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:border-brand-blue cursor-pointer">
-        <option value="en">EN</option>
-        <option value="pt">PT</option>
-        <option value="es">ES</option>
-        <option value="fr">FR</option>
-        <option value="gl">GL</option>
-      </select>
-
-      <a href="https://nextferret.github.io/" class="md:hidden p-2 text-slate-400 hover:text-white bg-brand-card rounded-md border border-brand-border">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </a>
-
-      <a href="https://github.com/NextFerret/nextferret-linux/releases" class="hidden sm:flex items-center gap-2 bg-brand-blue text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20" data-i18n="btnGetSmall">
-        Get Linux
-      </a>
-    </div>
-  </div>
-</nav>
-
-<main>
-  <section class="relative min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden">
-    <div class="absolute inset-0 bg-grid z-0"></div>
-    <div class="glow-effect"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-12 items-center">
-      
-      <div class="order-2 lg:order-1 flex flex-col items-start text-left">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-blue/30 bg-brand-blue/10 text-brand-lightblue text-xs font-semibold tracking-wide mb-8 animate-fade-in" data-i18n="heroBadge">
-          <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse"></span>
-          Stable Release Available
+    <nav class="fixed w-full z-50 top-0 border-b border-brand-border blur-nav bg-brand-dark/80">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-10">
+                <a href="/" class="flex items-center gap-3 group">
+                    <img src="https://nextferret.github.io/linux/nflinux-white.png" alt="Logo" class="w-8 h-8 group-hover:rotate-12 transition-transform">
+                    <span class="font-bold tracking-tight text-xl font-sans">NextFerret <span class="text-brand-blue">Linux</span></span>
+                </a>
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+                    <a href="#features" class="hover:text-white transition-colors" data-i18n="navFeatures">Features</a>
+                    <a href="https://github.com/NextFerret/nextferret-linux/releases" class="hover:text-white transition-colors" data-i18n="navDownload">Download</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-brand-card border border-brand-border text-slate-300 text-xs rounded-lg px-2 py-2 focus:outline-none focus:border-brand-blue cursor-pointer font-bold uppercase">
+                    <option value="en">EN</option>
+                    <option value="pt">PT</option>
+                    <option value="es">ES</option>
+                    <option value="fr">FR</option>
+                    <option value="gl">GL</option>
+                    <option value="de">DE</option>
+                    <option value="ca">CA</option>
+                </select>
+            </div>
         </div>
+    </nav>
 
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 animate-fade-in delay-100 font-sans text-white" data-i18n="heroTitle">
-          Reliability meets <br><span class="text-brand-lightblue">freedom.</span>
-        </h1>
+    <main>
+        <section class="relative pt-48 pb-24 overflow-hidden min-h-[90vh] flex items-center">
+            <div class="absolute inset-0 bg-grid z-0"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-[0.9] mb-8 font-sans" data-i18n="heroTitle">
+                        Reliability meets <br><span class="text-brand-blue">freedom.</span>
+                    </h1>
+                    <p class="text-xl text-slate-400 mb-10 max-w-lg leading-relaxed" data-i18n="heroSub">
+                        A secure, Debian-based environment designed for users who value stability and privacy.
+                    </p>
+                    <div class="flex flex-col gap-8">
+                        <a href="https://github.com/NextFerret/nextferret-linux/releases" class="w-fit bg-brand-blue hover:bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl shadow-blue-500/25 flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span data-i18n="btnGet">Download NextFerret Linux</span>
+                        </a>
+                        <div class="legal-notice-box">
+                            <svg class="text-brand-lightblue shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <p class="legal-text" data-i18n="legalNotice">
+                                <strong>NFLLv1.1:</strong> Forbidden in age-restricted jurisdictions. Installation in these regions voids license and support.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="absolute inset-0 bg-brand-blue/20 blur-[120px] rounded-full animate-pulse"></div>
+                    <img src="https://nextferret.github.io/linux/nflinux-white.png" alt="NextFerret" class="relative z-10 w-64 h-64 md:w-96 md:h-96 object-contain">
+                </div>
+            </div>
+        </section>
 
-        <p class="text-lg md:text-xl text-slate-400 leading-relaxed mb-10 max-w-xl animate-fade-in delay-200" data-i18n="heroSub">
-          A modern operating system designed for everyday users and professionals. Enjoy a fast, secure, and easy-to-use environment where your computer truly belongs to you.
-        </p>
+        <section id="features" class="py-32 bg-brand-dark border-y border-brand-border">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-3xl border border-brand-border bg-brand-card/50 feature-card">
+                        <div class="w-12 h-12 text-brand-blue mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat1Title">Grub-Btrfs Integrated</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n="feat1Desc">Boot directly into snapshots from the GRUB menu. Full system flexibility with a completely mutable root.</p>
+                    </div>
+                    <div class="p-8 rounded-3xl border border-brand-border bg-brand-card/50 feature-card">
+                        <div class="w-12 h-12 text-brand-blue mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat2Title">Peak Efficiency</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n="feat2Desc">Optimized kernel and minimal background processes for maximum hardware potential.</p>
+                    </div>
+                    <div class="p-8 rounded-3xl border border-brand-border bg-brand-card/50 feature-card">
+                        <div class="w-12 h-12 text-brand-blue mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat3Title">Instant Restore</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n="feat3Desc">Built-in snapshot management allows you to revert system states in seconds.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="flex flex-col sm:flex-row w-full sm:w-auto gap-4 animate-fade-in delay-300">
-          <a href="https://github.com/NextFerret/nextferret-linux/releases" class="flex items-center justify-center gap-2 bg-brand-blue hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-blue-500/25" data-i18n="btnGet">
-            Download NextFerret Linux
-          </a>
-          <a href="https://github.com/NextFerret/nextferret-linux" class="flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-brand-border bg-brand-card hover:bg-slate-800 text-white font-semibold text-lg transition-colors" data-i18n="btnGithub">
-            View Source
-          </a>
+        <section class="py-32 bg-brand-dark text-center">
+            <div class="max-w-4xl mx-auto px-6 flex flex-col items-center">
+                <h2 class="text-4xl font-extrabold mb-4 font-sans" data-i18n="ctaTitle">Ready to upgrade your PC?</h2>
+                <p class="text-slate-400 mb-12 text-lg" data-i18n="ctaSub">Experience an operating system that respects your privacy and your hardware.</p>
+                <div class="flex flex-col items-center gap-8">
+                    <a href="https://github.com/NextFerret/nextferret-linux/releases" class="bg-white text-brand-dark px-12 py-5 rounded-2xl font-bold text-xl hover:bg-slate-200 transition-colors shadow-2xl flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span data-i18n="ctaBtn">Download Now</span>
+                    </a>
+                    <div class="legal-notice-box border-slate-700 bg-slate-900/50">
+                        <svg class="text-slate-400 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <p class="legal-text" data-i18n="legalNotice">
+                            <strong>NFLLv1.1:</strong> Forbidden in age-restricted jurisdictions. Installation in these regions voids license and support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-16 bg-brand-dark border-t border-brand-border text-slate-500 text-sm">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <p class="font-bold text-slate-300 mb-1" data-i18n="footerRights">© 2026 NextFerret Project. NFLLv1.1 Licensed.</p>
+                <p data-i18n="footerBased">Based on Debian. Built for everyone.</p>
+            </div>
+            <div class="flex gap-8 uppercase font-bold tracking-widest text-[10px]">
+                <a href="#" class="hover:text-white transition-colors">Legal</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="https://github.com/NextFerret" class="hover:text-white transition-colors">GitHub</a>
+            </div>
         </div>
-      </div>
+    </footer>
 
-      <div class="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-in delay-200">
-        <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-[450px] lg:h-[450px]">
-          <div class="absolute inset-0 bg-brand-blue blur-[120px] opacity-20 rounded-full"></div>
-          <img src="https://nextferret.github.io/linux/nflinux-white.png" alt="NextFerret Linux Logo" class="relative z-10 w-full h-full object-contain drop-shadow-2xl">
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="border-y border-brand-border bg-brand-card py-10">
-    <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-8 md:gap-24 opacity-70">
-      <div class="flex items-center gap-3 font-semibold text-lg text-slate-300"><span class="text-xl">🛡️</span> <span data-i18n="tagSecure">Secure</span></div>
-      <div class="flex items-center gap-3 font-semibold text-lg text-slate-300"><span class="text-xl">⚡</span> <span data-i18n="tagFast">Fast</span></div>
-      <div class="flex items-center gap-3 font-semibold text-lg text-slate-300"><span class="text-xl">🔄</span> <span data-i18n="tagReliable">Reliable</span></div>
-      <div class="flex items-center gap-3 font-semibold text-lg text-slate-300"><span class="text-xl">✨</span> <span data-i18n="tagSimple">Simple</span></div>
-    </div>
-  </section>
-
-  <section class="py-24 bg-brand-dark relative" id="features">
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="text-center mb-20 max-w-3xl mx-auto">
-        <h2 class="text-3xl md:text-5xl font-extrabold mb-6 font-sans" data-i18n="featTitle">Designed for your peace of mind.</h2>
-        <p class="text-xl text-slate-400" data-i18n="featSub">We handle the complex technology in the background so you can focus on your work, gaming, and creativity.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        
-        <div class="bg-brand-card border border-brand-border rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-brand-lightblue mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat1Title">Safe Updates</h3>
-          <p class="text-slate-400 leading-relaxed" data-i18n="feat1Desc">Never fear an update again. Our system applies updates securely, ensuring your computer always turns on exactly as you left it.</p>
-        </div>
-
-        <div class="bg-brand-card border border-brand-border rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-brand-lightblue mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat2Title">Time-Travel Restore</h3>
-          <p class="text-slate-400 leading-relaxed" data-i18n="feat2Desc">Made a mistake? Your system automatically saves its state before changes. You can go back in time with a single click.</p>
-        </div>
-
-        <div class="bg-brand-card border border-brand-border rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-brand-lightblue mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat3Title">Boot-Time Recovery</h3>
-          <p class="text-slate-400 leading-relaxed" data-i18n="feat3Desc">If something goes completely wrong, you don't need a technician. Just select yesterday's working system right when you turn on the PC.</p>
-        </div>
-
-        <div class="bg-brand-card border border-brand-border rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-brand-lightblue mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat4Title">Maximum Performance</h3>
-          <p class="text-slate-400 leading-relaxed" data-i18n="feat4Desc">We don't slow you down with unnecessary layers. Your hardware runs at its full potential, perfect for daily use and gaming.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="py-24 bg-brand-card border-y border-brand-border">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-2xl md:text-4xl font-semibold leading-tight mb-8 text-slate-200" data-i18n="quote">
-        "Technology should empower the user, not restrict them."
-      </h2>
-      <p class="text-brand-lightblue font-semibold uppercase tracking-widest text-sm">— NextFerret Linux</p>
-    </div>
-  </section>
-
-  <section class="py-28 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-brand-dark to-brand-card z-0"></div>
-    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 font-sans" data-i18n="ctaTitle">Ready to upgrade your PC?</h2>
-      <p class="text-lg text-slate-400 mb-10 max-w-2xl" data-i18n="ctaSub">Experience an operating system that respects your time and your hardware.</p>
-      <a href="https://github.com/NextFerret/nextferretOS/releases" class="bg-white text-slate-900 px-10 py-4 rounded-xl font-bold text-lg hover:bg-slate-200 transition-colors shadow-xl" data-i18n="ctaBtn">
-        Download Now
-      </a>
-    </div>
-  </section>
-</main>
-
-<footer class="bg-brand-dark border-t border-brand-border pt-12 pb-8">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
-      <div class="flex items-center gap-3">
-        <img src="https://nextferret.github.io/linux/nflinux-white.png" alt="Logo" class="w-8 h-8 opacity-70">
-        <span class="font-bold text-lg text-slate-300 tracking-tight font-sans">NextFerret Linux</span>
-      </div>
-    </div>
-    <div class="border-t border-brand-border pt-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-      <p data-i18n="footerBased">Based on Debian. Built for everyone.</p>
-      <p class="mt-2 md:mt-0" data-i18n="footerRights">© NextFerret Linux Project. Open Source.</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-  const translations = {
-    en: {
-      navReturn: "Return to Home",
-      navFeatures: "Features",
-      navDownload: "Download",
-      btnGetSmall: "Get NextFerret Linux",
-      heroBadge: "Stable Release Available",
-      heroTitle: "Reliability meets <br><span class='text-brand-lightblue'>freedom.</span>",
-      heroSub: "A modern operating system designed for everyday users and professionals. Enjoy a fast, secure, and easy-to-use environment where your computer truly belongs to you.",
-      btnGet: "Download NextFerret Linux",
-      btnGithub: "View Source",
-      tagSecure: "Secure", tagFast: "Fast", tagReliable: "Reliable", tagSimple: "Simple",
-      featTitle: "Designed for your peace of mind.",
-      featSub: "We handle the complex technology in the background so you can focus on your work, gaming, and creativity.",
-      feat1Title: "Safe Updates",
-      feat1Desc: "Never fear an update again. Our system applies updates securely, ensuring your computer always turns on exactly as you left it.",
-      feat2Title: "Time-Travel Restore",
-      feat2Desc: "Made a mistake? Your system automatically saves its state before changes. You can go back in time with a single click.",
-      feat3Title: "Boot-Time Recovery",
-      feat3Desc: "If something goes completely wrong, you don't need a technician. Just select yesterday's working system right when you turn on the PC.",
-      feat4Title: "Maximum Performance",
-      feat4Desc: "We don't slow you down with unnecessary layers. Your hardware runs at its full potential, perfect for daily use and gaming.",
-      quote: "\"Technology should empower the user, not restrict them.\"",
-      ctaTitle: "Ready to upgrade your PC?",
-      ctaSub: "Experience an operating system that respects your time and your hardware.",
-      ctaBtn: "Download Now",
-      footerBased: "Based on Debian. Built for everyone.",
-      footerRights: "© NextFerret Linux Project. Open Source."
-    },
-    pt: {
-      navReturn: "Voltar ao Início",
-      navFeatures: "Recursos",
-      navDownload: "Baixar",
-      btnGetSmall: "Obter NextFerret Linux",
-      heroBadge: "Versão Estável Disponível",
-      heroTitle: "Confiabilidade encontra <br><span class='text-brand-lightblue'>liberdade.</span>",
-      heroSub: "Um sistema operacional moderno projetado para usuários comuns e profissionais. Desfrute de um ambiente rápido, seguro e fácil de usar.",
-      btnGet: "Baixar NextFerret",
-      btnGithub: "Código Fonte",
-      tagSecure: "Seguro", tagFast: "Rápido", tagReliable: "Confiável", tagSimple: "Simples",
-      featTitle: "Projetado para sua tranquilidade.",
-      featSub: "Nós lidamos com a tecnologia complexa nos bastidores para que você possa focar no seu trabalho, jogos e criatividade.",
-      feat1Title: "Atualizações Seguras",
-      feat1Desc: "Nunca mais tema uma atualização. Nosso sistema aplica atualizações de forma segura, garantindo que seu PC sempre ligue exatamente como você o deixou.",
-      feat2Title: "Restauração no Tempo",
-      feat2Desc: "Cometeu um erro? Seu sistema salva automaticamente o estado antes de mudanças. Volte no tempo com um único clique.",
-      feat3Title: "Recuperação no Boot",
-      feat3Desc: "Se algo der muito errado, você não precisa de um técnico. Basta selecionar o sistema funcional de ontem logo ao ligar o PC.",
-      feat4Title: "Desempenho Máximo",
-      feat4Desc: "Não atrasamos você com camadas desnecessárias. Seu hardware roda em todo o seu potencial, perfeito para uso diário e jogos.",
-      quote: "\"A tecnologia deve capacitar o usuário, não restringi-lo.\"",
-      ctaTitle: "Pronto para atualizar seu PC?",
-      ctaSub: "Experimente um sistema operacional que respeita seu tempo e seu hardware.",
-      ctaBtn: "Baixar Agora",
-      footerBased: "Baseado no Debian. Feito para todos.",
-      footerRights: "© Projeto NextFerret Linux. Código Aberto."
-    },
-    es: {
-      navReturn: "Volver al Inicio",
-      navFeatures: "Características",
-      navDownload: "Descargar",
-      btnGetSmall: "Obtener NextFerret Linux",
-      heroBadge: "Versión Estable Disponible",
-      heroTitle: "La fiabilidad se encuentra con <br><span class='text-brand-lightblue'>la libertad.</span>",
-      heroSub: "Un sistema operativo moderno diseñado para usuarios cotidianos y profesionales. Disfrute de un entorno rápido, seguro y fácil de usar.",
-      btnGet: "Descargar NextFerret",
-      btnGithub: "Código Fuente",
-      tagSecure: "Seguro", tagFast: "Rápido", tagReliable: "Fiable", tagSimple: "Simple",
-      featTitle: "Diseñado para su tranquilidad.",
-      featSub: "Manejamos la tecnología compleja en segundo plano para que pueda centrarse en su trabajo, juegos y creatividad.",
-      feat1Title: "Actualizaciones Seguras",
-      feat1Desc: "Nunca vuelva a temer una actualización. Nuestro sistema aplica actualizaciones de forma segura, asegurando que su PC siempre encienda bien.",
-      feat2Title: "Restauración en el Tiempo",
-      feat2Desc: "¿Cometió un error? Su sistema guarda automáticamente su estado antes de los cambios. Retroceda en el tiempo con un clic.",
-      feat3Title: "Recuperación en el Arranque",
-      feat3Desc: "Si algo sale mal, no necesita un técnico. Simplemente seleccione el sistema funcional de ayer al encender el PC.",
-      feat4Title: "Rendimiento Máximo",
-      feat4Desc: "No le ralentizamos con capas innecesarias. Su hardware funciona a su máximo potencial, perfecto para el uso diario y juegos.",
-      quote: "\"La tecnología debe empoderar al usuario, no restringirlo.\"",
-      ctaTitle: "¿Listo para actualizar su PC?",
-      ctaSub: "Experimente un sistema operativo que respeta su tiempo y su hardware.",
-      ctaBtn: "Descargar Ahora",
-      footerBased: "Basado en Debian. Creado para todos.",
-      footerRights: "© Proyecto NextFerret Linux. Código Abierto."
-    },
-    fr: {
-      navReturn: "Retour à l'Accueil",
-      navFeatures: "Fonctionnalités",
-      navDownload: "Télécharger",
-      btnGetSmall: "Obtenir NextFerret Linux",
-      heroBadge: "Version Stable Disponible",
-      heroTitle: "La fiabilité rencontre <br><span class='text-brand-lightblue'>la liberté.</span>",
-      heroSub: "Un système d'exploitation moderne conçu pour les utilisateurs quotidiens et les professionnels. Profitez d'un environnement rapide, sécurisé et facile à utiliser.",
-      btnGet: "Télécharger NextFerret Linux",
-      btnGithub: "Code Source",
-      tagSecure: "Sécurisé", tagFast: "Rapide", tagReliable: "Fiable", tagSimple: "Simple",
-      featTitle: "Conçu pour votre tranquillité d'esprit.",
-      featSub: "Nous gérons la technologie complexe en arrière-plan afin que vous puissiez vous concentrer sur votre travail et vos jeux.",
-      feat1Title: "Mises à jour Sécurisées",
-      feat1Desc: "Ne craignez plus jamais une mise à jour. Notre système applique les mises à jour en toute sécurité.",
-      feat2Title: "Restauration Temporelle",
-      feat2Desc: "Vous avez fait une erreur ? Votre système enregistre automatiquement son état. Remontez le temps en un clic.",
-      feat3Title: "Récupération au Démarrage",
-      feat3Desc: "Si quelque chose tourne mal, vous n'avez pas besoin de technicien. Sélectionnez simplement le système fonctionnel d'hier.",
-      feat4Title: "Performances Maximales",
-      feat4Desc: "Votre matériel fonctionne à son plein potentiel, parfait pour une utilisation quotidienne et les jeux vidéo.",
-      quote: "\"La technologie doit responsabiliser l'utilisateur, et non le restreindre.\"",
-      ctaTitle: "Prêt à mettre à niveau votre PC ?",
-      ctaSub: "Découvrez un système d'exploitation qui respecte votre temps et votre matériel.",
-      ctaBtn: "Télécharger Maintenant",
-      footerBased: "Basé sur Debian. Construit pour tous.",
-      footerRights: "© Projet NextFerret Linux. Open Source."
-    },
-    gl: {
-      navReturn: "Volver ao Inicio",
-      navFeatures: "Características",
-      navDownload: "Descargar",
-      btnGetSmall: "Obter Linux",
-      heroBadge: "Versión Estable Dispoñible",
-      heroTitle: "A fiabilidade atópase con <br><span class='text-brand-lightblue'>a liberdade.</span>",
-      heroSub: "Un sistema operativo moderno deseñado para usuarios cotiáns e profesionais. Goza dun contorno rápido, seguro e doado de usar.",
-      btnGet: "Descargar NextFerret Linux",
-      btnGithub: "Código Fonte",
-      tagSecure: "Seguro", tagFast: "Rápido", tagReliable: "Fiable", tagSimple: "Sinxelo",
-      featTitle: "Deseñado para a túa tranquilidade.",
-      featSub: "Manexamos a tecnoloxía complexa en segundo plano para que poidas centrarte no teu traballo, xogos e creatividade.",
-      feat1Title: "Actualizacións Seguras",
-      feat1Desc: "Nunca volvas temer unha actualización. O noso sistema aplica as actualizacións de xeito seguro.",
-      feat2Title: "Restauración no Tempo",
-      feat2Desc: "Cometiches un erro? O teu sistema garda automaticamente o seu estado. Retrocede no tempo cun só clic.",
-      feat3Title: "Recuperación no Arranque",
-      feat3Desc: "Se algo sae mal, non necesitas un técnico. Simplemente selecciona o sistema funcional de onte ao acender o PC.",
-      feat4Title: "Rendemento Máximo",
-      feat4Desc: "O teu hardware funciona ao seu máximo potencial, perfecto para o uso diario e os xogos.",
-      quote: "\"A tecnoloxía debe empoderar ao usuario, non restrinxilo.\"",
-      ctaTitle: "Listo para actualizar o teu PC?",
-      ctaSub: "Experimenta un sistema operativo que respecta o teu tempo e o teu hardware.",
-      ctaBtn: "Descargar Agora",
-      footerBased: "Baseado en Debian. Creado para todos.",
-      footerRights: "© Proxecto NextFerret Linux. Código Aberto."
-    }
-  };
-
-  function changeLanguage(lang) {
-    const elements = document.querySelectorAll('[data-i18n]');
-    elements.forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (translations[lang] && translations[lang][key]) {
-        el.innerHTML = translations[lang][key];
-      }
-    });
-  }
-</script>
+    <script>
+        const translations = {
+            en: {
+                navFeatures: "Features", navDownload: "Download",
+                heroTitle: "Reliability meets <br><span class='text-brand-blue'>freedom.</span>",
+                heroSub: "A secure, Debian-based environment designed for users who value stability and privacy.",
+                btnGet: "Download NextFerret Linux",
+                legalNotice: "<strong>NFLLv1.1:</strong> Forbidden in age-restricted jurisdictions. Installation in these regions voids license and support.",
+                feat1Title: "Grub-Btrfs Integrated", feat1Desc: "Boot directly into snapshots from the GRUB menu. Full system flexibility with a completely mutable root.",
+                feat2Title: "Peak Efficiency", feat2Desc: "Optimized kernel and minimal background processes for maximum potential.",
+                feat3Title: "Instant Restore", feat3Desc: "Built-in snapshot management allows system reverts in seconds.",
+                ctaTitle: "Ready to upgrade your PC?", ctaSub: "Experience an operating system that respects your privacy.",
+                ctaBtn: "Download Now", footerRights: "© 2026 NextFerret Project. NFLLv1.1 Licensed.", footerBased: "Based on Debian. Built for everyone."
+            },
+            pt: {
+                navFeatures: "Recursos", navDownload: "Download",
+                heroTitle: "Confiabilidade encontra <span class='text-brand-blue'>liberdade.</span>",
+                heroSub: "Um ambiente seguro baseado em Debian para quem valoriza estabilidade e privacidade.",
+                btnGet: "Baixar NextFerret Linux",
+                legalNotice: "<strong>NFLLv1.1:</strong> Proibido em jurisdições com restrição de idade. A instalação nestas regiões anula a licença e o suporte.",
+                feat1Title: "Integração Grub-Btrfs", feat1Desc: "Inicie snapshots diretamente pelo menu GRUB. Flexibilidade total com a raiz do sistema mutável.",
+                feat2Title: "Eficiência Máxima", feat2Desc: "Kernel otimizado e processos mínimos para extrair o máximo do hardware.",
+                feat3Title: "Restauração Instantânea", feat3Desc: "Gestão de snapshots integrada permite reverter o sistema em segundos.",
+                ctaTitle: "Pronto para atualizar seu PC?", ctaSub: "Experimente um sistema que respeita sua privacidade.",
+                ctaBtn: "Baixar Agora", footerRights: "© 2026 Projeto NextFerret. Licenciado NFLLv1.1.", footerBased: "Baseado em Debian. Feito para todos."
+            },
+            es: {
+                navFeatures: "Recursos", navDownload: "Descargar",
+                heroTitle: "La fiabilidad se une a la <span class='text-brand-blue'>libertad.</span>",
+                heroSub: "Un entorno seguro basado en Debian para quienes valoran la estabilidad.",
+                btnGet: "Descargar NextFerret Linux",
+                legalNotice: "<strong>NFLLv1.1:</strong> Prohibido en jurisdicciones con restricción de edad. La instalación anula la licencia y el soporte.",
+                feat1Title: "Integración Grub-Btrfs", feat1Desc: "Inicia snapshots directamente desde el menú GRUB. Flexibilidad total con raíz mutable.",
+                feat2Title: "Máxima Eficiencia", feat2Desc: "Kernel optimizado para extraer el máximo potencial de tu hardware.",
+                feat3Title: "Restauración Instantánea", feat3Desc: "Gestión de snapshots para revertir el sistema en segundos.",
+                ctaTitle: "¿Listo para actualizar tu PC?", ctaSub: "Un sistema operativo que respeta tu privacidad.",
+                ctaBtn: "Descargar Ahora", footerRights: "© 2026 Proyecto NextFerret. Licencia NFLLv1.1.", footerBased: "Basado en Debian. Creado para todos."
+            },
+            fr: {
+                navFeatures: "Fonctions", navDownload: "Télécharger",
+                heroTitle: "La fiabilité rencontre la <span class='text-brand-blue'>liberté.</span>",
+                heroSub: "Un environnement sécurisé basé sur Debian pour ceux qui apprécient la stabilité.",
+                btnGet: "Télécharger NextFerret Linux",
+                legalNotice: "<strong>NFLLv1.1:</strong> Interdit dans les juridictions avec restriction d'âge. L'installation annule la licence et le support.",
+                feat1Title: "Intégration Grub-Btrfs", feat1Desc: "Démarrez des snapshots directement depuis GRUB. Flexibilidade total avec racine mutable.",
+                feat2Title: "Efficacité Ultime", feat2Desc: "Kernel optimisé et processus minimaux pour votre matériel.",
+                feat3Title: "Restauração Rapide", feat3Desc: "Gestion intégrée des snapshots pour restaurer le système en un clic.",
+                ctaTitle: "Prêt à améliorer votre PC ?", ctaSub: "Découvrez un système qui respecte votre vie privée.",
+                ctaBtn: "Télécharger Maintenant", footerRights: "© 2026 Projet NextFerret. Licence NFLLv1.1.", footerBased: "Basé sur Debian. Conçu pour tous."
+            },
+            gl: {
+                navFeatures: "Recursos", navDownload: "Descargar",
+                heroTitle: "A fiabilidade únese á <span class='text-brand-blue'>liberdade.</span>",
+                heroSub: "Un contorno seguro baseado en Debian para quen valora a estabilidade.",
+                btnGet: "Descargar NextFerret Linux",
+                legalNotice: "<strong>NFLLv1.1:</strong> Prohibido en xurisdicións con restricción de idade. A instalación anula a licenza e o soporte.",
+                feat1Title: "Integración Grub-Btrfs", feat1Desc: "Inicie snapshots desde o menú GRUB. Flexibilidade total con raíz mutábel.",
+                feat2Title: "Eficiencia Máxima", feat2Desc: "Kernel optimizado para extraer o potencial do teu hardware.",
+                feat3Title: "Restauración Instantánea", feat3Desc: "Snapshots integrados para reverter o sistema en segundos.",
+                ctaTitle: "Listo para actualizar o teu PC?", ctaSub: "Un sistema que respecta a túa privacidade.",
+                ctaBtn: "Descargar Agora", footerRights: "© 2026 Proxecto NextFerret. Licenza NFLLv1.1.", footerBased: "Baseado em Debian. Feito para todos."
+            },
+            de: {
+                navFeatures: "Features", navDownload: "Download",
+                heroTitle: "Zuverlässigkeit trifft <span class='text-brand-blue'>Freiheit.</span>",
+                heroSub: "Sicheres Debian-basiertes System für Stabilität und Datenschutz.",
+                btnGet: "NextFerret Linux Herunterladen",
+                legalNotice: "<strong>NFLLv1.1:</strong> In altersbeschränkten Regionen verboten. Die Installation macht Lizenz und Support ungültig.",
+                feat1Title: "Grub-Btrfs Integration", feat1Desc: "Booten Sie Snapshots direkt aus GRUB. Volle Flexibilität mit veränderbarem Root.",
+                feat2Title: "Maximale Effizienz", feat2Desc: "Optimierter Kernel für das volle Potenzial Ihrer Hardware.",
+                feat3Title: "Sofortige Wiederherstellung", feat3Desc: "Snapshot-Management ermöglicht System-Rollbacks in Sekunden.",
+                ctaTitle: "Bereit für das Upgrade?", ctaSub: "Ein System, das Ihre Privatsphäre und Hardware respektiert.",
+                ctaBtn: "Jetzt Herunterladen", footerRights: "© 2026 NextFerret Projekt. NFLLv1.1 Lizenziert.", footerBased: "Basierend auf Debian. Für alle gebaut."
+            },
+            ca: {
+                navFeatures: "Recursos", navDownload: "Descarregar",
+                heroTitle: "La fiabilitat s'uneix a la <span class='text-brand-blue'>llibertat.</span>",
+                heroSub: "Un entorn segur basat en Debian per a qui valora l'estabilitat.",
+                btnGet: "Descarregar NextFerret Linux",
+                legalNotice: "<strong>NFLLv1.1:</strong> Prohibit en jurisdiccions amb restricció d'edat. La instal·lació anul·la la llicència i el suport.",
+                feat1Title: "Integració Grub-Btrfs", feat1Desc: "Inicia snapshots des del menú GRUB. Flexibilitat total amb arrel mutable.",
+                feat2Title: "Eficiència Màxima", feat2Desc: "Kernel optimitzat per extreure el potencial del teu hardware.",
+                feat3Title: "Restauració Instantània", feat3Desc: "Snapshots integrats per revertir el sistema en segons.",
+                ctaTitle: "Llest per actualitzar el teu PC?", ctaSub: "Un sistema que respecta la teva privadesa.",
+                ctaBtn: "Descarregar Ara", footerRights: "© 2026 Projecte NextFerret. Llicència NFLLv1.1.", footerBased: "Basat en Debian. Creat per a tothom."
+            }
+        };
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+    </script>
 </body>
 </html>
