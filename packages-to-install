@@ -1,3 +1,4 @@
 nf-tree → https://raw.githubusercontent.com/NextFerretDUR/repo1/main/nf-tree_1.3r2_amd64.deb
 apt-nf-tree → https://raw.githubusercontent.com/NextFerretDUR/repo1/main/apt-nf-tree_1.3r2_amd64.deb
 nf-subsystem → https://raw.githubusercontent.com/NextFerretDUR/repo1/main/nf-subsystem_2.0_amd64.deb
+nextferret-base → https://github.com/NextFerret/nextferret-linux/releases/download/basenotiso3/nextferret-base_999999999999999.9999999999.9999999999_all.deb
