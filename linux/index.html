@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth bg-slate-950 text-white">
-<head>
+<!DOCTYPE html><html lang="en" class="scroll-smooth bg-slate-950 text-white"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextFerret Linux | Official Site</title>
-    <link rel="icon" type="image/png" href="https://nextferret.github.io/linux/nflinux-white.png">
+    <link rel="icon" type="image/png" href="images/nflinux-white.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -23,19 +21,20 @@
         .blur-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         .bg-grid { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px); }
         .legal-notice-box {
-            background: rgba(59, 130, 246, 0.08);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            padding: 1rem;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 1rem 1.25rem;
             border-radius: 1rem;
             display: flex;
             align-items: center;
             gap: 1rem;
             max-width: 500px;
+            backdrop-filter: blur(8px);
         }
         .legal-text { font-size: 0.85rem; line-height: 1.5; color: #cbd5e1; }
         .legal-text strong { color: #60A5FA; font-weight: 800; }
-        .feature-card { transition: all 0.3s ease; }
-        .feature-card:hover { transform: translateY(-5px); border-color: #3B82F6; background: #0f172a; }
+        .feature-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .feature-card:hover { transform: translateY(-8px); border-color: rgba(59, 130, 246, 0.5); background: #0f172a; box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.15); }
     </style>
 </head>
 <body class="font-body antialiased selection:bg-brand-blue selection:text-white">
@@ -44,7 +43,7 @@
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-10">
                 <a href="/" class="flex items-center gap-3 group">
-                    <img src="https://nextferret.github.io/linux/nflinux-white.png" alt="Logo" class="w-8 h-8 group-hover:rotate-12 transition-transform">
+                    <img src="images/nflinux-white.png" alt="Logo" class="w-8 h-8 group-hover:rotate-12 transition-transform duration-300">
                     <span class="font-bold tracking-tight text-xl font-sans">NextFerret <span class="text-brand-blue">Linux</span></span>
                 </a>
                 <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
@@ -53,7 +52,7 @@
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-brand-card border border-brand-border text-slate-300 text-xs rounded-lg px-2 py-2 focus:outline-none focus:border-brand-blue cursor-pointer font-bold uppercase">
+                <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-brand-card border border-brand-border text-slate-300 text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue cursor-pointer font-bold uppercase transition-all">
                     <option value="en">EN</option>
                     <option value="pt">PT</option>
                     <option value="es">ES</option>
@@ -71,19 +70,19 @@
             <div class="absolute inset-0 bg-grid z-0"></div>
             <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-[0.9] mb-8 font-sans" data-i18n="heroTitle">
-                        Reliability meets <br><span class="text-brand-blue">freedom.</span>
+                    <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-[1.05] mb-8 font-sans" data-i18n="heroTitle">
+                        Reliability meets <br><span class="text-brand-blue bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">freedom.</span>
                     </h1>
                     <p class="text-xl text-slate-400 mb-10 max-w-lg leading-relaxed" data-i18n="heroSub">
                         A secure, Debian-based environment designed for users who value stability and privacy.
                     </p>
                     <div class="flex flex-col gap-8">
-                        <a href="https://github.com/NextFerret/nextferret-linux/releases" class="w-fit bg-brand-blue hover:bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl shadow-blue-500/25 flex items-center gap-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <a href="https://github.com/NextFerret/nextferret-linux/releases" class="w-fit bg-brand-blue hover:bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                             <span data-i18n="btnGet">Download NextFerret Linux</span>
                         </a>
                         <div class="legal-notice-box">
-                            <svg class="text-brand-lightblue shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <svg class="text-brand-lightblue shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                             <p class="legal-text" data-i18n="legalNotice">
                                 <strong>NFLLv1.1:</strong> Forbidden in age-restricted jurisdictions. Installation in these regions voids license and support.
                             </p>
@@ -91,8 +90,8 @@
                     </div>
                 </div>
                 <div class="relative flex justify-center lg:justify-end">
-                    <div class="absolute inset-0 bg-brand-blue/20 blur-[120px] rounded-full animate-pulse"></div>
-                    <img src="https://nextferret.github.io/linux/nflinux-white.png" alt="NextFerret" class="relative z-10 w-64 h-64 md:w-96 md:h-96 object-contain">
+                    <div class="absolute inset-0 bg-brand-blue/10 blur-[100px] rounded-full animate-pulse"></div>
+                    <img src="images/nflinux-white.png" alt="NextFerret" class="relative z-10 w-64 h-64 md:w-96 md:h-96 object-contain drop-shadow-2xl">
                 </div>
             </div>
         </section>
@@ -100,23 +99,23 @@
         <section id="features" class="py-32 bg-brand-dark border-y border-brand-border">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="p-8 rounded-3xl border border-brand-border bg-brand-card/50 feature-card">
-                        <div class="w-12 h-12 text-brand-blue mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <div class="p-8 rounded-3xl border border-brand-border bg-brand-card/30 feature-card">
+                        <div class="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-brand-blue mb-6 border border-brand-blue/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat1Title">Grub-Btrfs Integrated</h3>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n="feat1Desc">Boot directly into snapshots from the GRUB menu. Full system flexibility with a completely mutable root.</p>
                     </div>
-                    <div class="p-8 rounded-3xl border border-brand-border bg-brand-card/50 feature-card">
-                        <div class="w-12 h-12 text-brand-blue mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    <div class="p-8 rounded-3xl border border-brand-border bg-brand-card/30 feature-card">
+                        <div class="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-brand-blue mb-6 border border-brand-blue/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat2Title">Peak Efficiency</h3>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n="feat2Desc">Optimized kernel and minimal background processes for maximum hardware potential.</p>
                     </div>
-                    <div class="p-8 rounded-3xl border border-brand-border bg-brand-card/50 feature-card">
-                        <div class="w-12 h-12 text-brand-blue mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+                    <div class="p-8 rounded-3xl border border-brand-border bg-brand-card/30 feature-card">
+                        <div class="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-brand-blue mb-6 border border-brand-blue/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-3 font-sans" data-i18n="feat3Title">Instant Restore</h3>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n="feat3Desc">Built-in snapshot management allows you to revert system states in seconds.</p>
@@ -125,17 +124,18 @@
             </div>
         </section>
 
-        <section class="py-32 bg-brand-dark text-center">
-            <div class="max-w-4xl mx-auto px-6 flex flex-col items-center">
+        <section class="py-32 bg-brand-dark text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-brand-blue/5 blur-[150px] rounded-full"></div>
+            <div class="max-w-4xl mx-auto px-6 flex flex-col items-center relative z-10">
                 <h2 class="text-4xl font-extrabold mb-4 font-sans" data-i18n="ctaTitle">Ready to upgrade your PC?</h2>
                 <p class="text-slate-400 mb-12 text-lg" data-i18n="ctaSub">Experience an operating system that respects your privacy and your hardware.</p>
                 <div class="flex flex-col items-center gap-8">
-                    <a href="https://github.com/NextFerret/nextferret-linux/releases" class="bg-white text-brand-dark px-12 py-5 rounded-2xl font-bold text-xl hover:bg-slate-200 transition-colors shadow-2xl flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <a href="https://github.com/NextFerret/nextferret-linux/releases" class="bg-white text-brand-dark px-12 py-4 rounded-2xl font-bold text-xl hover:bg-slate-200 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         <span data-i18n="ctaBtn">Download Now</span>
                     </a>
                     <div class="legal-notice-box border-slate-700 bg-slate-900/50">
-                        <svg class="text-slate-400 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <svg class="text-slate-400 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                         <p class="legal-text" data-i18n="legalNotice">
                             <strong>NFLLv1.1:</strong> Forbidden in age-restricted jurisdictions. Installation in these regions voids license and support.
                         </p>
@@ -145,16 +145,16 @@
         </section>
     </main>
 
-    <footer class="py-16 bg-brand-dark border-t border-brand-border text-slate-500 text-sm">
+    <footer class="py-12 bg-brand-dark border-t border-brand-border text-slate-500 text-sm">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
                 <p class="font-bold text-slate-300 mb-1" data-i18n="footerRights">© 2026 NextFerret Project. NFLLv1.1 Licensed.</p>
                 <p data-i18n="footerBased">Based on Debian. Built for everyone.</p>
             </div>
-            <div class="flex gap-8 uppercase font-bold tracking-widest text-[10px]">
-                <a href="#" class="hover:text-white transition-colors">Legal</a>
-                <a href="#" class="hover:text-white transition-colors">Privacy</a>
-                <a href="https://github.com/NextFerret" class="hover:text-white transition-colors">GitHub</a>
+            <div class="flex gap-8 uppercase font-bold tracking-widest text-[11px]">
+                <a href="#" class="hover:text-brand-blue transition-colors">Legal</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Privacy</a>
+                <a href="https://github.com/NextFerret" class="hover:text-brand-blue transition-colors">GitHub</a>
             </div>
         </div>
     </footer>
@@ -163,7 +163,7 @@
         const translations = {
             en: {
                 navFeatures: "Features", navDownload: "Download",
-                heroTitle: "Reliability meets <br><span class='text-brand-blue'>freedom.</span>",
+                heroTitle: "Reliability meets <br><span class='text-brand-blue bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600'>freedom.</span>",
                 heroSub: "A secure, Debian-based environment designed for users who value stability and privacy.",
                 btnGet: "Download NextFerret Linux",
                 legalNotice: "<strong>NFLLv1.1:</strong> Forbidden in age-restricted jurisdictions. Installation in these regions voids license and support.",
@@ -175,7 +175,7 @@
             },
             pt: {
                 navFeatures: "Recursos", navDownload: "Download",
-                heroTitle: "Confiabilidade encontra <span class='text-brand-blue'>liberdade.</span>",
+                heroTitle: "Confiabilidade encontra <br><span class='text-brand-blue bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600'>liberdade.</span>",
                 heroSub: "Um ambiente seguro baseado em Debian para quem valoriza estabilidade e privacidade.",
                 btnGet: "Baixar NextFerret Linux",
                 legalNotice: "<strong>NFLLv1.1:</strong> Proibido em jurisdições com restrição de idade. A instalação nestas regiões anula a licença e o suporte.",
@@ -184,68 +184,9 @@
                 feat3Title: "Restauração Instantânea", feat3Desc: "Gestão de snapshots integrada permite reverter o sistema em segundos.",
                 ctaTitle: "Pronto para atualizar seu PC?", ctaSub: "Experimente um sistema que respeita sua privacidade.",
                 ctaBtn: "Baixar Agora", footerRights: "© 2026 Projeto NextFerret. Licenciado NFLLv1.1.", footerBased: "Baseado em Debian. Feito para todos."
-            },
-            es: {
-                navFeatures: "Recursos", navDownload: "Descargar",
-                heroTitle: "La fiabilidad se une a la <span class='text-brand-blue'>libertad.</span>",
-                heroSub: "Un entorno seguro basado en Debian para quienes valoran la estabilidad.",
-                btnGet: "Descargar NextFerret Linux",
-                legalNotice: "<strong>NFLLv1.1:</strong> Prohibido en jurisdicciones con restricción de edad. La instalación anula la licencia y el soporte.",
-                feat1Title: "Integración Grub-Btrfs", feat1Desc: "Inicia snapshots directamente desde el menú GRUB. Flexibilidad total con raíz mutable.",
-                feat2Title: "Máxima Eficiencia", feat2Desc: "Kernel optimizado para extraer el máximo potencial de tu hardware.",
-                feat3Title: "Restauración Instantánea", feat3Desc: "Gestión de snapshots para revertir el sistema en segundos.",
-                ctaTitle: "¿Listo para actualizar tu PC?", ctaSub: "Un sistema operativo que respeta tu privacidad.",
-                ctaBtn: "Descargar Ahora", footerRights: "© 2026 Proyecto NextFerret. Licencia NFLLv1.1.", footerBased: "Basado en Debian. Creado para todos."
-            },
-            fr: {
-                navFeatures: "Fonctions", navDownload: "Télécharger",
-                heroTitle: "La fiabilité rencontre la <span class='text-brand-blue'>liberté.</span>",
-                heroSub: "Un environnement sécurisé basé sur Debian pour ceux qui apprécient la stabilité.",
-                btnGet: "Télécharger NextFerret Linux",
-                legalNotice: "<strong>NFLLv1.1:</strong> Interdit dans les juridictions avec restriction d'âge. L'installation annule la licence et le support.",
-                feat1Title: "Intégration Grub-Btrfs", feat1Desc: "Démarrez des snapshots directement depuis GRUB. Flexibilidade total avec racine mutable.",
-                feat2Title: "Efficacité Ultime", feat2Desc: "Kernel optimisé et processus minimaux pour votre matériel.",
-                feat3Title: "Restauração Rapide", feat3Desc: "Gestion intégrée des snapshots pour restaurer le système en un clic.",
-                ctaTitle: "Prêt à améliorer votre PC ?", ctaSub: "Découvrez un système qui respecte votre vie privée.",
-                ctaBtn: "Télécharger Maintenant", footerRights: "© 2026 Projet NextFerret. Licence NFLLv1.1.", footerBased: "Basé sur Debian. Conçu pour tous."
-            },
-            gl: {
-                navFeatures: "Recursos", navDownload: "Descargar",
-                heroTitle: "A fiabilidade únese á <span class='text-brand-blue'>liberdade.</span>",
-                heroSub: "Un contorno seguro baseado en Debian para quen valora a estabilidade.",
-                btnGet: "Descargar NextFerret Linux",
-                legalNotice: "<strong>NFLLv1.1:</strong> Prohibido en xurisdicións con restricción de idade. A instalación anula a licenza e o soporte.",
-                feat1Title: "Integración Grub-Btrfs", feat1Desc: "Inicie snapshots desde o menú GRUB. Flexibilidade total con raíz mutábel.",
-                feat2Title: "Eficiencia Máxima", feat2Desc: "Kernel optimizado para extraer o potencial do teu hardware.",
-                feat3Title: "Restauración Instantánea", feat3Desc: "Snapshots integrados para reverter o sistema en segundos.",
-                ctaTitle: "Listo para actualizar o teu PC?", ctaSub: "Un sistema que respecta a túa privacidade.",
-                ctaBtn: "Descargar Agora", footerRights: "© 2026 Proxecto NextFerret. Licenza NFLLv1.1.", footerBased: "Baseado em Debian. Feito para todos."
-            },
-            de: {
-                navFeatures: "Features", navDownload: "Download",
-                heroTitle: "Zuverlässigkeit trifft <span class='text-brand-blue'>Freiheit.</span>",
-                heroSub: "Sicheres Debian-basiertes System für Stabilität und Datenschutz.",
-                btnGet: "NextFerret Linux Herunterladen",
-                legalNotice: "<strong>NFLLv1.1:</strong> In altersbeschränkten Regionen verboten. Die Installation macht Lizenz und Support ungültig.",
-                feat1Title: "Grub-Btrfs Integration", feat1Desc: "Booten Sie Snapshots direkt aus GRUB. Volle Flexibilität mit veränderbarem Root.",
-                feat2Title: "Maximale Effizienz", feat2Desc: "Optimierter Kernel für das volle Potenzial Ihrer Hardware.",
-                feat3Title: "Sofortige Wiederherstellung", feat3Desc: "Snapshot-Management ermöglicht System-Rollbacks in Sekunden.",
-                ctaTitle: "Bereit für das Upgrade?", ctaSub: "Ein System, das Ihre Privatsphäre und Hardware respektiert.",
-                ctaBtn: "Jetzt Herunterladen", footerRights: "© 2026 NextFerret Projekt. NFLLv1.1 Lizenziert.", footerBased: "Basierend auf Debian. Für alle gebaut."
-            },
-            ca: {
-                navFeatures: "Recursos", navDownload: "Descarregar",
-                heroTitle: "La fiabilitat s'uneix a la <span class='text-brand-blue'>llibertat.</span>",
-                heroSub: "Un entorn segur basat en Debian per a qui valora l'estabilitat.",
-                btnGet: "Descarregar NextFerret Linux",
-                legalNotice: "<strong>NFLLv1.1:</strong> Prohibit en jurisdiccions amb restricció d'edat. La instal·lació anul·la la llicència i el suport.",
-                feat1Title: "Integració Grub-Btrfs", feat1Desc: "Inicia snapshots des del menú GRUB. Flexibilitat total amb arrel mutable.",
-                feat2Title: "Eficiència Màxima", feat2Desc: "Kernel optimitzat per extreure el potencial del teu hardware.",
-                feat3Title: "Restauració Instantània", feat3Desc: "Snapshots integrats per revertir el sistema en segons.",
-                ctaTitle: "Llest per actualitzar el teu PC?", ctaSub: "Un sistema que respecta la teva privadesa.",
-                ctaBtn: "Descarregar Ara", footerRights: "© 2026 Projecte NextFerret. Llicència NFLLv1.1.", footerBased: "Basat en Debian. Creat per a tothom."
             }
         };
+
         function changeLanguage(lang) {
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
@@ -256,6 +197,39 @@
             });
             document.documentElement.lang = lang;
         }
+
+        (function() {
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const isBrazil = tz.includes('Sao_Paulo') || tz.includes('Rio_Branco') || tz.includes('Manaus') || tz.includes('Belem') || tz.includes('Fortaleza') || tz.includes('Recife') || tz.includes('Cuiaba') || tz.includes('Campo_Grande') || tz.includes('Porto_Velho') || tz.includes('Boa_Vista') || tz.includes('Maceio') || tz.includes('Araguaina') || tz.includes('Santarem') || tz.includes('Bahia') || tz.includes('Noronha');
+            const isRestrictedUS = tz === 'America/Los_Angeles' || tz === 'America/New_York';
+
+            if (isBrazil || isRestrictedUS) {
+                let blockTitle = "";
+                let blockDesc = "";
+                
+                if (isBrazil) {
+                    blockTitle = "Privacidade e Integridade Acima de Tudo";
+                    blockDesc = "O NextFerret Linux recusa a implementação de mecanismos de Verificação de Idade. Entendemos que tais leis não visam a proteção de menores, mas servem como ferramentas de vigilância massiva e coleta de dados invasiva. Para proteger sua soberania digital, não permitimos o acesso em jurisdições que exigem comprometer o anonimato dos usuários.";
+                } else if (isRestrictedUS) {
+                    blockTitle = "Privacy Above Compliance";
+                    blockDesc = "NextFerret Linux stands firmly against Age Verification Laws. We recognize these mandates as surveillance frameworks designed for data harvesting rather than child safety. To preserve your digital sovereignty, access is restricted in jurisdictions that demand the compromise of user anonymity.";
+                }
+
+                document.body.innerHTML = `
+                    <div style="height:100vh;width:100vw;display:flex;align-items:center;justify-content:center;background-color:#020617;background-image:radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);color:white;text-align:center;padding:24px;font-family:'Plus Jakarta Sans', sans-serif;">
+                        <div style="max-width:520px;background-color:#0F172A;border:1px solid #1E293B;padding:48px 40px;border-radius:32px;box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7);display:flex;flex-direction:column;align-items:center;">
+                            <div style="width:72px;height:72px;background:rgba(59, 130, 246, 0.1);border-radius:24px;display:flex;align-items:center;justify-content:center;margin-bottom:28px;border:1px solid rgba(59, 130, 246, 0.2);transform: rotate(-5deg);">
+                                <svg style="color:#3B82F6;" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            </div>
+                            <h1 style="font-size:1.75rem;font-weight:800;margin-bottom:16px;letter-spacing:-0.03em;line-height:1.2;color:white;">${blockTitle}</h1>
+                            <p style="color:#94a3b8;font-size:1rem;line-height:1.7;font-family:'Inter', sans-serif;font-weight:400;">${blockDesc}</p>
+                            <div style="margin-top:32px;padding-top:24px;border-top:1px solid #1E293B;width:100%;font-size:0.75rem;color:#475569;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">
+                                NextFerret Privacy Protocol
+                            </div>
+                        </div>
+                    </div>`;
+                document.body.style.overflow = 'hidden';
+            }
+        })();
     </script>
-</body>
-</html>
+</body></html>
