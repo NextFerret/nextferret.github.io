@@ -1,0 +1,8 @@
+PRETTY_NAME="Arvor Linux 5 (Gallaecia)"
+NAME="Arvor Linux"
+VERSION_ID="5"
+VERSION="5 (Gallaecia)"
+ID=arvorlinux
+ID_LIKE=debian
+LOGO=distributor-logo
+NEXTFERRET_BUILD_DATE=27/6/2026
