@@ -1,1 +1,1 @@
-i remade the repo cuz ummmmmm i accidentaly deleted it
+i remade the repo cuz ummmmmm i accidentally deleted it
