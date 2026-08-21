@@ -1,7 +1,7 @@
-PRETTY_NAME="Arvor Linux 7 (Carballo)"
+PRETTY_NAME="Arvor Linux 7.1 (Sable)"
 NAME="Arvor Linux"
-VERSION_ID="7"
-VERSION="7 (Carballo)"
+VERSION_ID="7.1"
+VERSION="7.1 (Sable)"
 ID=arvorlinux
 ID_LIKE=debian
 LOGO=distributor-logo
